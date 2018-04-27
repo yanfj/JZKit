@@ -1,0 +1,88 @@
+PODS:
+  - AFNetworking (3.2.0):
+    - AFNetworking/NSURLSession (= 3.2.0)
+    - AFNetworking/Reachability (= 3.2.0)
+    - AFNetworking/Security (= 3.2.0)
+    - AFNetworking/Serialization (= 3.2.0)
+    - AFNetworking/UIKit (= 3.2.0)
+  - AFNetworking/NSURLSession (3.2.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.0)
+  - AFNetworking/Security (3.2.0)
+  - AFNetworking/Serialization (3.2.0)
+  - AFNetworking/UIKit (3.2.0):
+    - AFNetworking/NSURLSession
+  - JZKit (1.0.0):
+    - JZKit/JZBasicInstance (= 1.0.0)
+    - JZKit/JZCategory (= 1.0.0)
+    - JZKit/JZGeneralMacros (= 1.0.0)
+    - JZKit/JZGeographicService (= 1.0.0)
+    - JZKit/JZNetworkService (= 1.0.0)
+    - JZKit/JZPickerGroup (= 1.0.0)
+    - JZKit/JZSettingsService (= 1.0.0)
+  - JZKit/JZBasicInstance (1.0.0):
+    - JZKit/JZGeneralMacros
+  - JZKit/JZCategory (1.0.0):
+    - JZKit/JZCategory/Foundation (= 1.0.0)
+    - JZKit/JZCategory/UIKit (= 1.0.0)
+    - JZKit/JZCategory/Unicode (= 1.0.0)
+  - JZKit/JZCategory/Foundation (1.0.0)
+  - JZKit/JZCategory/UIKit (1.0.0):
+    - JZKit/JZGeneralMacros
+    - SDWebImage (~> 4.0)
+  - JZKit/JZCategory/Unicode (1.0.0)
+  - JZKit/JZGeneralMacros (1.0.0)
+  - JZKit/JZGeographicService (1.0.0):
+    - MJExtension-Enhanced
+    - YYCache
+  - JZKit/JZNetworkService (1.0.0):
+    - AFNetworking (~> 3.0)
+    - JZKit/JZGeneralMacros
+    - MJExtension-Enhanced
+    - YYCache
+  - JZKit/JZPickerGroup (1.0.0):
+    - JZKit/JZCategory/Foundation
+    - JZKit/JZGeneralMacros
+    - JZKit/JZGeographicService
+    - MMPopupView-Enhanced
+  - JZKit/JZSettingsService (1.0.0):
+    - JZKit/JZGeneralMacros
+  - Masonry (1.1.0)
+  - MJExtension-Enhanced (3.0.13)
+  - MMPopupView-Enhanced (1.0.2):
+    - Masonry
+  - SDWebImage (4.3.3):
+    - SDWebImage/Core (= 4.3.3)
+  - SDWebImage/Core (4.3.3)
+  - YYCache (1.0.4)
+
+DEPENDENCIES:
+  - JZKit (from `../`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - Masonry
+    - MJExtension-Enhanced
+    - MMPopupView-Enhanced
+    - SDWebImage
+    - YYCache
+
+EXTERNAL SOURCES:
+  JZKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
+  JZKit: bcd07659266f4a7e5ff9af5b7a48a13381f2a699
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJExtension-Enhanced: 361b960472e4c0dd3b2ea2e42f679e228ec445d4
+  MMPopupView-Enhanced: 513126dcc3b99e8c7f67827cff283c5a6e753c62
+  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  YYCache: 8105b6638f5e849296c71f331ff83891a4942952
+
+PODFILE CHECKSUM: b86b627828c4b9ffddbc9fda1b6f17d63391dadf
+
+COCOAPODS: 1.5.0

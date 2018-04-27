@@ -1,0 +1,9 @@
+#use_frameworks!
+
+inhibit_all_warnings!
+
+target 'JZKit_Example' do
+    
+  pod 'JZKit', :path => '../'
+
+end
