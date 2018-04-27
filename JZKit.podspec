@@ -113,8 +113,8 @@ Pod::Spec.new do |s|
       
       ss.dependency 'MMPopupView-Enhanced'
       ss.dependency 'JZKit/JZGeneralMacros'
-      ss.dependency 'JZKit/JZGeographicService'
       ss.dependency 'JZKit/JZCategory/Foundation'
+      ss.dependency 'JZKit/JZGeographicService'
       
       ss.source_files = 'JZKit/JZPickerGroup'
       

@@ -1,6 +1,6 @@
 //
 //  JZBasicRequest.m
-//  AFNetworking
+//  JZKit
 //
 //  Created by Yan's on 2018/4/26.
 //

@@ -34,7 +34,7 @@
          , , ,,,:,,::::::::iiiiiiiiii:,:,:::::::::iiir;ri7vL77rrirri::
           :,, , ::::::::i:::i:::i:i::,,,,,:,::i:i:::iir;@Secbone.ii:::
  
-                                      JZGeneralMacros
+                 JZKit                JZGeneralMacros
  //  Created by Yan's on 2018/4/26.
  //  Copyright © 2018年 Yan's All rights reserved.
 **********************************************************************/

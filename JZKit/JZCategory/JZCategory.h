@@ -1,6 +1,6 @@
 //
 //  JZCategory.h
-//  Pods-JZKit_Example
+//  JZKit
 //
 //  Created by Yan's on 2018/4/26.
 //

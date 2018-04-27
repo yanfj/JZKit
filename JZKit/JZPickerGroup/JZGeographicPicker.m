@@ -1,6 +1,6 @@
 //
 //  JZGeographicPicker.m
-//  AFNetworking
+//  JZKit
 //
 //  Created by Yan's on 2018/4/27.
 //
@@ -8,6 +8,7 @@
 #import "JZGeographicPicker.h"
 #import <JZKit/NSArray+JZExtension.h>
 #import <JZKit/JZGeneralMacros.h>
+#import <JZKit/JZGeographicService.h>
 
 /**
  选择列
