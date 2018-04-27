@@ -44,11 +44,6 @@ Pod::Spec.new do |s|
   s.subspec 'JZCategory' do |ss|
       
       ss.source_files = 'JZKit/JZCategory/JZCategory.h'
-      
-      #编码
-      ss.subspec 'Unicode' do |sss|
-          sss.source_files = 'JZKit/JZCategory/Unicode'
-      end
       #UIKit
       ss.subspec 'UIKit' do |sss|
           
@@ -61,6 +56,13 @@ Pod::Spec.new do |s|
       #Foundation
       ss.subspec 'Foundation' do |sss|
           sss.source_files = 'JZKit/JZCategory/Foundation'
+      end
+      #编码
+      ss.subspec 'Unicode' do |sss|
+          
+          sss.dependency 'JZKit/JZCategory/Foundation'
+          
+          sss.source_files = 'JZKit/JZCategory/Unicode'
       end
       
   end
