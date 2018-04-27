@@ -5,11 +5,9 @@
 [![License](https://img.shields.io/cocoapods/l/JZKit.svg?style=flat)](https://cocoapods.org/pods/JZKit)
 [![Platform](https://img.shields.io/cocoapods/p/JZKit.svg?style=flat)](https://cocoapods.org/pods/JZKit)
 
-## Example
+## Statement
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
+个人常用的框架
 
 ## Installation
 
