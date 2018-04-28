@@ -1,6 +1,5 @@
 # JZKit
 
-[![CI Status](https://img.shields.io/travis/yanfj/JZKit.svg?style=flat)](https://travis-ci.org/yanfj/JZKit)
 [![Version](https://img.shields.io/cocoapods/v/JZKit.svg?style=flat)](https://cocoapods.org/pods/JZKit)
 [![License](https://img.shields.io/cocoapods/l/JZKit.svg?style=flat)](https://cocoapods.org/pods/JZKit)
 [![Platform](https://img.shields.io/cocoapods/p/JZKit.svg?style=flat)](https://cocoapods.org/pods/JZKit)
