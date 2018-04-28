@@ -100,9 +100,9 @@ Pod::Spec.new do |s|
   #地区
   s.subspec 'JZGeographicService' do |ss|
       
+      ss.dependency 'JZKit/JZBasicInstance'
       ss.dependency 'MJExtension-Enhanced'
       ss.dependency 'YYCache'
-      ss.dependency 'JZKit/JZBasicInstance'
       
       ss.source_files = 'JZKit/JZGeographicService'
       
