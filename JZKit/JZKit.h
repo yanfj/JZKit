@@ -13,8 +13,8 @@
 #import "JZCategory.h"
 //设置
 #import "JZSettingsService.h"
-//用户信息
-#import "JZAccountInstance.h"
+//单例
+#import "JZBasicInstance.h"
 //宏
 #import "JZGeneralMacros.h"
 //网络
