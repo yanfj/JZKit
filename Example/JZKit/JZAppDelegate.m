@@ -7,12 +7,23 @@
 //
 
 #import "JZAppDelegate.h"
+#import <JZKit/JZKit.h>
 
 @implementation JZAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    [JZNetworkService startNetworkStatusWithBlock:^(JZNetworkStatus status) {
+        if (status >= JZNetworkStatusViaWWAN) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:JZNotificationNetworkConnectSucceed object:nil userInfo:nil];
+        }else{
+            [[NSNotificationCenter defaultCenter] postNotificationName:JZNotificationNetworkConnectFailed object:nil userInfo:nil];
+        }
+    }];
+    
+    
     return YES;
 }
 

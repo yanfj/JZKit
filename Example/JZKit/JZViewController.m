@@ -7,7 +7,7 @@
 //
 
 #import "JZViewController.h"
-#import <JZKit/JZProgressHUD.h>
+#import <JZKit/JZKit.h>
 
 @interface JZViewController ()
 
@@ -19,6 +19,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    [self jz_registerNotification];
     
 }
 - (IBAction)button:(id)sender {

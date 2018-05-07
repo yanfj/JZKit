@@ -134,4 +134,58 @@ typedef NS_ENUM(NSInteger, JZHTTPDataOperate) {
  *  @param open YES(打开), NO(关闭)
  */
 + (void)openNetworkActivityIndicator:(BOOL)open;
+
+@end
+
+#pragma mark - 网络状态枚举
+/**
+ *  网络状态枚举
+ */
+typedef NS_ENUM(NSUInteger, JZNetworkStatus) {
+    /**
+     *  未知网络
+     */
+    JZNetworkStatusUnknown,
+    /**
+     *  无网络
+     */
+    JZNetworkStatusNotReachable,
+    /**
+     *  手机网络
+     */
+    JZNetworkStatusViaWWAN,
+    /**
+     * WIFI网络
+     */
+    JZNetworkStatusViaWiFi,
+};
+
+#pragma mark - 网络状态通知
+
+FOUNDATION_EXTERN  NSString *const JZNotificationNetworkStatusUnknown;       //未知网络
+FOUNDATION_EXTERN  NSString *const JZNotificationNetworkStatusNotReachable;  //无网络
+FOUNDATION_EXTERN  NSString *const JZNotificationNetworkStatusViaWWAN;       //蜂窝网络
+FOUNDATION_EXTERN  NSString *const JZNotificationNetworkStatusViaWiFi;       //WIFI
+
+#pragma mark - 网络情况监测
+/**
+ 网络情况
+ */
+@interface JZNetworkService (NetworkStatus)
+/**
+ 实时获取网络状态,通过Block回调实时获取(此方法可多次调用)
+ */
++ (void)startNetworkStatusWithBlock:(void(^)(JZNetworkStatus status))networkStatus;
+/**
+ * 是否有网
+ */
++ (BOOL)isReachable;
+/**
+ * 是否是蜂窝网络
+ */
++ (BOOL)isWWANNetwork;
+/**
+ * 是否是WIFI
+ */
++ (BOOL)isWiFiNetwork;
 @end

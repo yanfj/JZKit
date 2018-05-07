@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JZKit'
-  s.version          = '1.1.0'
+  s.version          = '1.1.1'
   s.summary          = 'a general framework'
 
 # This description is used to generate tags and improve search results.

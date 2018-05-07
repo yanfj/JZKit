@@ -296,3 +296,75 @@ Class JZGetResponseClass (JZBasicRequest *request){
     
 }
 @end
+
+NSString * const JZNotificationNetworkStatusUnknown      = @"JZNotificationNetworkStatusUnknown";       //未知网络
+NSString * const JZNotificationNetworkStatusNotReachable = @"JZNotificationNetworkStatusNotReachable";  //无网络
+NSString * const JZNotificationNetworkStatusViaWWAN      = @"JZNotificationNetworkStatusViaWWAN";       //蜂窝网络
+NSString * const JZNotificationNetworkStatusViaWiFi      = @"JZNotificationNetworkStatusViaWiFi";       //WIFI
+
+@implementation JZNetworkService (NetworkStatus)
+#pragma mark - 开始监听网络
++ (void)startNetworkStatusWithBlock:(void(^)(JZNetworkStatus status))networkStatus{
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
+        [reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+            switch (status){
+                case AFNetworkReachabilityStatusUnknown:{
+                    networkStatus ? networkStatus(JZNetworkStatusUnknown) : nil;
+                    //发送通知
+                    [[NSNotificationCenter defaultCenter] postNotificationName:JZNotificationNetworkStatusUnknown object:nil];
+                    NSLog(@"未知网络");
+                }
+                    break;
+                case AFNetworkReachabilityStatusNotReachable:{
+                    networkStatus ? networkStatus(JZNetworkStatusNotReachable) : nil;
+                    //发送通知
+                    [[NSNotificationCenter defaultCenter] postNotificationName:JZNotificationNetworkStatusNotReachable object:nil];
+                    NSLog(@"无网络");
+                }
+                    break;
+                case AFNetworkReachabilityStatusReachableViaWWAN:{
+                    networkStatus ? networkStatus(JZNetworkStatusViaWWAN) : nil;
+                    //发送通知
+                    [[NSNotificationCenter defaultCenter] postNotificationName:JZNotificationNetworkStatusViaWWAN object:nil];
+                    NSLog(@"蜂窝网络");
+                }
+                    break;
+                case AFNetworkReachabilityStatusReachableViaWiFi:{
+                    networkStatus ? networkStatus(JZNetworkStatusViaWiFi) : nil;
+                    //发送通知
+                    [[NSNotificationCenter defaultCenter] postNotificationName:JZNotificationNetworkStatusViaWiFi object:nil];
+                    NSLog(@"WIFI");
+                }
+                    break;
+            }
+        }];
+        
+        [reachabilityManager startMonitoring];
+    });
+}
+#pragma mark - 是否有网
++ (BOOL)isReachable{
+    
+    return [AFNetworkReachabilityManager sharedManager].reachable;
+    
+}
+#pragma mark - 是否是蜂窝网络
++ (BOOL)isWWANNetwork{
+    
+    return [AFNetworkReachabilityManager sharedManager].reachableViaWWAN;
+    
+}
+#pragma mark - 是否是WIFI
++ (BOOL)isWiFiNetwork{
+    
+    return [AFNetworkReachabilityManager sharedManager].reachableViaWiFi;
+    
+}
+
+
+
+@end
