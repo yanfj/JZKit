@@ -28,5 +28,8 @@
 #import "JZGeographicPicker.h"
 #import "JZDatePicker.h"
 
+//HUD
+#import "JZProgressHUD.h"
+
 
 #endif /* JZKit_h */
