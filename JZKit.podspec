@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JZKit'
-  s.version          = '1.0.0'
+  s.version          = '1.1.0'
   s.summary          = 'a general framework'
 
 # This description is used to generate tags and improve search results.
@@ -117,6 +117,17 @@ Pod::Spec.new do |s|
       ss.dependency 'JZKit/JZGeographicService'
       
       ss.source_files = 'JZKit/JZPickerGroup'
+      
+  end
+  
+  #HUD
+  s.subspec 'JZProgressHUD' do |ss|
+      
+      ss.dependency 'MBProgressHUD'
+      ss.dependency 'JZKit/JZGeneralMacros'
+      
+      ss.source_files = 'JZKit/JZProgressHUD/*.{h,m}'
+      ss.resources    = 'JZKit/JZProgressHUD/JZProgressHUD.bundle'
       
   end
   
