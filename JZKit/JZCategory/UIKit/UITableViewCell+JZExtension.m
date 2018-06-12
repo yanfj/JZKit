@@ -36,6 +36,10 @@
     return NSStringFromClass([self class]);
 }
 #pragma mark -  JZTableViewCellNotificationProtocol
+- (void)jz_registerNotification{
+    //添加通知
+    
+}
 - (void)jz_removeNotification{
     //移除通知
     [[NSNotificationCenter defaultCenter] removeObserver:self];

@@ -47,4 +47,8 @@
         });
     });
 }
+- (void)jz_imageWithSize:(CGSize)aSize radius:(CGFloat)aRadius completion:(void (^)(UIImage *))completion{
+    
+    [self jz_imageWithSize:aSize radius:aRadius fillColor:nil opaque:NO completion:completion];
+}
 @end

@@ -14,6 +14,11 @@
     self.contentView.clipsToBounds = YES;
     
 }
+#pragma mark - Notification
+- (void)jz_registerNotification{
+    
+    //通知
+}
 #pragma mark - Class
 + (CGSize)jz_itemSizeWithModel:(id)model{
     
