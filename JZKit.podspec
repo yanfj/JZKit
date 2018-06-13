@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JZKit'
-  s.version          = '1.1.1'
+  s.version          = '1.1.2'
   s.summary          = 'a general framework'
 
 # This description is used to generate tags and improve search results.
@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/yanfj/JZKit.git', :tag => s.version.to_s }
   s.social_media_url = 'http://me.yanfj.com'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '8.0'
   s.requires_arc = true
 
   s.public_header_files = 'JZKit/JZKit.h'

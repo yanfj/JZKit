@@ -14,10 +14,9 @@
 /**
  方法交换
 
- @param class 类名
  @param origSel 旧方法
  @param swizSel 新方法
  */
-+ (void)jz_swizzleMethods:(Class)class originalSelector:(SEL)origSel swizzledSelector:(SEL)swizSel;
++ (void)jz_swizzleMethodWithOriginalSelector:(SEL)origSel swizzledSelector:(SEL)swizSel;
 
 @end

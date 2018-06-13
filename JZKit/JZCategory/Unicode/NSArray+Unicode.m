@@ -14,9 +14,9 @@
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [self jz_swizzleMethods:[self class] originalSelector:@selector(description) swizzledSelector:@selector(replaceDescription)];
-        [self jz_swizzleMethods:[self class] originalSelector:@selector(descriptionWithLocale:) swizzledSelector:@selector(replaceDescriptionWithLocale:)];
-        [self jz_swizzleMethods:[self class] originalSelector:@selector(descriptionWithLocale:indent:) swizzledSelector:@selector(replaceDescriptionWithLocale:indent:)];
+        [self jz_swizzleMethodWithOriginalSelector:@selector(description) swizzledSelector:@selector(replaceDescription)];
+        [self jz_swizzleMethodWithOriginalSelector:@selector(descriptionWithLocale:) swizzledSelector:@selector(replaceDescriptionWithLocale:)];
+        [self jz_swizzleMethodWithOriginalSelector:@selector(descriptionWithLocale:indent:) swizzledSelector:@selector(replaceDescriptionWithLocale:indent:)];
     });
     
 }

@@ -9,7 +9,9 @@
 #import <objc/runtime.h>
 
 @implementation NSObject (MethodSwizzling)
-+ (void)jz_swizzleMethods:(Class)class originalSelector:(SEL)origSel swizzledSelector:(SEL)swizSel{
++ (void)jz_swizzleMethodWithOriginalSelector:(SEL)origSel swizzledSelector:(SEL)swizSel{
+    
+    Class class = [self class];
     
     Method origMethod = class_getInstanceMethod(class, origSel);
     Method swizMethod = class_getInstanceMethod(class, swizSel);
