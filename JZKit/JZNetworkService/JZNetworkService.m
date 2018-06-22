@@ -157,7 +157,7 @@ static NSMutableDictionary<NSString *,NSURLSessionDataTask *> *_requestContainer
                                      }
                                      completionHandle( [[error userInfo] valueForKey:responce_data], error);
                                  }];
-        } else {
+        } else if ([[request method] isEqualToString:GET]){
             //Get
             task = [_sessionManager GET:url
                              parameters:[request parameters]
@@ -176,7 +176,28 @@ static NSMutableDictionary<NSString *,NSURLSessionDataTask *> *_requestContainer
                                     completionHandle( [[error userInfo] valueForKey:responce_data], error);
                                     
                                 }];
+        } else if ([[request method] isEqualToString:PUT]){
+            //Put
+            task = [_sessionManager PUT:url
+                             parameters:[request parameters]
+                                success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {
+                                    //成功回调
+                                    if (![JZNetworkConfiguration defaultConfiguration].disabledLog) {
+                                        NSLog(@"[PUT]--[%@] 🍏\n%@",[request functionName],responseObject);
+                                    }
+                                    completionHandle( responseObject, nil );
+                                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                    //失败回调
+                                    if (![JZNetworkConfiguration defaultConfiguration].disabledLog) {
+                                        NSLog(@"[PUT]--[%@] 🍎\n%@",[request functionName],error);
+                                    }
+                                    completionHandle( [[error userInfo] valueForKey:responce_data], error);
+                                    
+                                }];
+            
         }
+            
+            
         
         //添加进请求池
         task ? [_requestContainer  setObject:task forKey:[request uniqueKey]] : nil ;

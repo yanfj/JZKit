@@ -10,6 +10,7 @@
 //请求方式
 static NSString * const  POST = @"http_post";
 static NSString * const  GET  = @"http_get";
+static NSString * const  PUT  = @"http_put";
 
 #pragma mark - 请求协议
 @protocol JZRequestProtocol <NSObject>
