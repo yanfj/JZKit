@@ -197,8 +197,6 @@ static NSMutableDictionary<NSString *,NSURLSessionDataTask *> *_requestContainer
             
         }
             
-            
-        
         //添加进请求池
         task ? [_requestContainer  setObject:task forKey:[request uniqueKey]] : nil ;
         
