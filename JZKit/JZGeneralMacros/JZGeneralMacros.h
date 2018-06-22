@@ -64,15 +64,15 @@ fprintf(stderr,"%s JZKit(Debug):[%s:%d]: %s\n",[timeString UTF8String],[fileName
 #define NSLog(FORMAT, ...) nil
 #endif
 
-//------------------- 获取设备大小 -------------------------
+//------------------- 获取屏幕相关 -------------------------
 //屏幕长度宽度
 #define UI_SCREEN_HEIGHT  ([UIScreen mainScreen].bounds.size.height)
 #define UI_SCREEN_WIDTH   ([UIScreen mainScreen].bounds.size.width)
 
 //适配比
-#define UI_SCALE(dp)      (int)round(((dp) * (UI_SCREEN_WIDTH / 375.f)))
+#define UI_SCALE(dp)      (int)round(((dp) * (UI_SCREEN_WIDTH / (UI_IS_LANDSCAPE ? 667.f : 375.f))))
 
-//------------------- 获取设备数据 -------------------------
+//------------------- 获取设备相关 -------------------------
 //获取系统版本
 #define SYSTEM_VERSION    [[[UIDevice currentDevice] systemVersion] floatValue]
 //获取app名字
@@ -102,21 +102,21 @@ fprintf(stderr,"%s JZKit(Debug):[%s:%d]: %s\n",[timeString UTF8String],[fileName
 
 //------------------- 获取控件大小 -------------------------
 //导航栏高度
-#define NAVIGATIONBAR_HEIGHT     44.f
+#define UI_NAVIGATIONBAR_HEIGHT     44.f
 
 //状态栏高度
-#define STATUSBAR_HEIGHT         (UI_IS_IPHONE_X ? 44.f : 20.f)
-
-//导航栏+状态栏高度
-#define NAVIGATION_HEIGHT        (NAVIGATIONBAR_HEIGHT + STATUSBAR_HEIGHT)
+#define UI_STATUSBAR_HEIGHT         (UI_IS_IPHONE_X ? 44.f : 20.f)
 
 //选项卡高度
-#define TABBAR_HEIGHT            (UI_IS_IPHONE_X ? 83.f : 49.f)
+#define UI_TABBAR_HEIGHT            (UI_IS_IPHONE_X ? 83.f : 49.f)
 
 //-------------------- 颜色 -----------------------------
-//带有RGBA的颜色设置
-#define RGB_COLOR(R, G, B, A)   [UIColor colorWithRed:R/255.f green:G/255.f blue:B/255.f alpha:A/1.f]
-
+//RGBA的颜色设置
+#define RGBA_COLOR(R, G, B, A)   [UIColor colorWithRed:R/255.f green:G/255.f blue:B/255.f alpha:A/1.f]
+//RGBA的颜色设置
+#define RGB_COLOR(R, G, B)   [UIColor colorWithRed:R/255.f green:G/255.f blue:B/255.f alpha:1.f]
+//HEX 颜色设置 (0xFFFFFF)
+#define HEX_COLOR(hexString)    [UIColor colorWithRed:((float)((hexString & 0xFF0000) >> 16))/255.0 green:((float)((hexString & 0xFF00) >> 8))/255.0 blue:((float)(hexString & 0xFF))/255.0 alpha:1.0]
 
 //-------------------- 字符串 -----------------------------
 #define EMPTY_STRING        @""
@@ -124,20 +124,20 @@ fprintf(stderr,"%s JZKit(Debug):[%s:%d]: %s\n",[timeString UTF8String],[fileName
 //-------------------- 字典 -----------------------------
 #define EMPTY_PARA          @{}
 
-//-------------------- 本地化 ---------------------------
-#define LS(key)             NSLocalizedString(key, nil)
-
 //-------------------- 图片  ---------------------------
 #define IMG(name)           [UIImage imageNamed:name]
 
 //-------------------- 字体  --------------------------
-#define FONT(size)          [UIFont systemFontOfSize:size]
-#define FONT_BOLD(size)     [UIFont boldSystemFontOfSize:size]
+#define FONT(size)          [UIFont systemFontOfSize:UI_SCALE(size)]
+#define FONT_BOLD(size)     [UIFont boldSystemFontOfSize:UI_SCALE(size)]
 
 //-------------------- 保留的tag值 ---------------------
 #define TAG_BASIC           1000
 
-
-
+//-------------------- 系统目录 ------------------------
+// Documents目录
+#define DOCUMENTS_PATH  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
+// Cache
+#define CACHES_PATH     [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject]
 
 #endif /* JZGeneralMacros */
