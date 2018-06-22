@@ -29,7 +29,7 @@
     
     if (self = [super init]){
         
-        self.textFont = FONT_BOLD(UI_SCALE(16));
+        self.textFont = FONT_BOLD(16);
         self.confirmTextColor = MMHexColor(0x4A4A4AFF);
         self.cancelTextColor = MMHexColor(0x4A4A4AFF);
         self.tintColor = MMHexColor(0xF7F6F5FF);

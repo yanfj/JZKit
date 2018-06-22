@@ -26,7 +26,7 @@ static UIWindow *_keyWindow = nil;
         _hud.minSize = CGSizeMake(UI_SCALE(100), UI_SCALE(100));
         _hud.margin = UI_SCALE(15);
         _hud.label.numberOfLines = 0;
-        _hud.label.font = FONT(UI_SCALE(14));
+        _hud.label.font = FONT(14);
     }
     if (_bundle == nil) {
         NSBundle *classBundle = [NSBundle bundleForClass:[JZProgressHUD class]];
