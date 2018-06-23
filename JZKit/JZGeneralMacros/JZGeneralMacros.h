@@ -70,7 +70,7 @@ fprintf(stderr,"%s JZKit(Debug):[%s:%d]: %s\n",[timeString UTF8String],[fileName
 #define UI_SCREEN_WIDTH   ([UIScreen mainScreen].bounds.size.width)
 
 //适配比
-#define UI_SCALE(dp)      (int)round((dp) * ((UI_IS_LANDSCAPE ? UI_SCREEN_HEIGHT : UI_SCREEN_WIDTH) / 375.f))
+#define UI_SCALE(dp)      (round((dp) * ((UI_IS_LANDSCAPE ? UI_SCREEN_HEIGHT : UI_SCREEN_WIDTH) / 375.f)))
 
 //------------------- 获取设备相关 -------------------------
 //获取系统版本
