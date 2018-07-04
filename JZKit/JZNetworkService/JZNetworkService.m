@@ -54,6 +54,10 @@ static NSMutableDictionary<NSString *,NSURLSessionDataTask *> *_requestContainer
 }
 + (void)setValue:(NSString *)value forHTTPHeaderField:(NSString *)field{
     
+    if ([JZNetworkConfiguration defaultConfiguration].logLevel == JZNetworkLogLevelAll) {
+        NSLog(@"设置请求头 %@ : %@",field,value);
+    }
+    
     [_sessionManager.requestSerializer setValue:value forHTTPHeaderField:field];
     
 }
