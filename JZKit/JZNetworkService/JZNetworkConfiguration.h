@@ -9,6 +9,24 @@
 
 
 /**
+ 日志打印等级
+ 
+ - JZNetworkLogLevelDisable: 不打印日志
+ - JZNetworkLogLevelOutput: 只打印出参信息
+ - JZNetworkLogLevelInputAndOutput: 打印出参及入参信息
+ - JZNetworkLogLevelAll: 打印所有网络框架的信息
+ */
+typedef NS_ENUM(NSInteger , JZNetworkLogLevel){
+    
+    JZNetworkLogLevelDisable,
+    JZNetworkLogLevelOutput,
+    JZNetworkLogLevelInputAndOutput,
+    JZNetworkLogLevelAll,
+    
+};
+
+
+/**
  网络请求配置
  */
 @interface JZNetworkConfiguration : NSObject
@@ -33,9 +51,9 @@
  */
 @property (nonatomic, assign) NSRange range;
 /**
- * 是否禁用接口日志,默认开启
+ * 接口日志等级，默认 JZNetworkLogLevelDisable
  */
-@property (nonatomic, assign) BOOL disabledLog;
+@property (nonatomic, assign) JZNetworkLogLevel logLevel;
 /**
  单例
  

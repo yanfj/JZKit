@@ -1,6 +1,0 @@
-framework module JZKit {
-  umbrella header "JZKit-umbrella.h"
-
-  export *
-  module * { export * }
-}

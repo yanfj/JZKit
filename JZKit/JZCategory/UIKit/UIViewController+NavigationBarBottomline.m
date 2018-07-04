@@ -9,6 +9,7 @@
 #import <objc/runtime.h>
 
 @implementation UIViewController (NavigationBarBottomline)
+@dynamic jz_bottomline;
 #pragma mark - 设置底线
 - (void)setJz_bottomline:(UIImageView *)jz_bottomline{
     

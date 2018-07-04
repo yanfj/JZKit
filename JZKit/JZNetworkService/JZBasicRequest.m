@@ -6,7 +6,9 @@
 //
 
 #import "JZBasicRequest.h"
-#import <MJExtension-Enhanced/MJExtension.h>
+#import "JZNetworkConfiguration.h"
+#import <MJExtension/MJExtension.h>
+#import <JZKit/JZGeneralMacros.h>
 
 //需要被过滤的初始键值
 static NSString * const key_ignoreKeys  = @"ignoreKeys";
@@ -56,6 +58,11 @@ static NSString * const key_ignoreKeys  = @"ignoreKeys";
     //替换键值
     para = [self replaceKeys:para];
     
+    if ([JZNetworkConfiguration defaultConfiguration].logLevel >= JZNetworkLogLevelInputAndOutput) {
+        
+        NSLog(@"[入参]--[%@]:%@",[self functionName],para);
+    }
+    
     return para;
 }
 #pragma mark - 替换键值
@@ -71,7 +78,6 @@ static NSString * const key_ignoreKeys  = @"ignoreKeys";
             [para removeObjectForKey:key];
             
         }
-        
     }
     
     return para;
@@ -97,22 +103,6 @@ static NSString * const key_ignoreKeys  = @"ignoreKeys";
     
     return uniqueKey;
     
-}
-#pragma mark - 描述
-- (NSString *)description{
-    
-    //创建过滤集合
-    NSMutableSet<NSString *>  *ignoreSet = [NSMutableSet set];
-    //添加过滤参数
-    [ignoreSet addObjectsFromArray:[self.ignoreKeys allObjects]];
-    //模型转字典
-    NSMutableDictionary *para = [self mj_keyValuesWithIgnoredKeys:[ignoreSet allObjects]];
-    //替换
-    para = [self replaceKeys:para];
-    //描述
-    NSString *desc = [para mj_JSONString];
-    
-    return desc;
 }
 #pragma mark - MJKeyValue(手动过滤Foundation框架类里面的属性)
 + (NSArray *)mj_ignoredPropertyNames{

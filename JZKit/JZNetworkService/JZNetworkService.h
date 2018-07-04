@@ -6,7 +6,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "JZRequestProtocol.h"
+#import "JZResponceProtocol.h"
 
 /**
  *  请求数据枚举
@@ -55,7 +56,23 @@ typedef NS_ENUM(NSInteger, JZHTTPDataOperate) {
     JZHTTPDataOperate_UpdataToLocal         =   0x0100,
 };
 
-@class JZBasicRequest;
+
+@class JZErrorResponce;
+
+/**
+ 成功回调
+
+ @param responseObject 响应体
+ */
+typedef void(^JZSuccessBlock)(id<JZResponceProtocol> responseObject);
+
+/**
+ 失败回调
+
+ @param errorObject 错误响应体
+ @param error 错误信息
+ */
+typedef void(^JZFailureBlock)(JZErrorResponce* errorObject,NSError *error);
 
 /**
  数据请求管理者（负责分发数据请求，处理响应）
@@ -66,30 +83,36 @@ typedef NS_ENUM(NSInteger, JZHTTPDataOperate) {
  *  从网络获取数据请求获取数据
  *
  *  @param request    请求参数对象
- *  @param completion 响应
+ *  @param successBlock  成功响应
+ *  @param failureBlock  失败响应
  */
-+ (void)fetchDataWithRequest:(JZBasicRequest *)request
-                  completion:( void (^)(id responseObject, NSError *error))completion;
++ (void)fetchDataWithRequest:(id<JZRequestProtocol>)request
+                successBlock:(JZSuccessBlock)successBlock
+                failureBlock:(JZFailureBlock)failureBlock;
 /**
  *  通过请求获取数据(可操作模式)
  *
  *  @param request    请求参数对象
  *  @param operate    操作
- *  @param completion 响应
+ *  @param successBlock  成功响应
+ *  @param failureBlock  失败响应
  */
-+ (void)fetchDataWithRequest:(JZBasicRequest *)request
++ (void)fetchDataWithRequest:(id<JZRequestProtocol>)request
                      operate:(JZHTTPDataOperate)operate
-                  completion:( void (^)(id responseObject, NSError *error))completion;
+                successBlock:(JZSuccessBlock)successBlock
+                failureBlock:(JZFailureBlock)failureBlock;
 /**
  *  通过请求获取数据(优先从缓存读,请求到数据再返回)
  *
  *  @param request          请求参数对象
  *  @param responseCache    缓存数据
- *  @param completion       响应
+ *  @param successBlock  成功响应
+ *  @param failureBlock  失败响应
  */
-+ (void)fetchDataWithRequest:(JZBasicRequest *)request
-               responseCache:( void (^)(id responseObject))responseCache
-                  completion:( void (^)(id responseObject, NSError *error))completion;
++ (void)fetchDataWithRequest:(id<JZRequestProtocol>)request
+               responseCache:(JZSuccessBlock)responseCache
+                successBlock:(JZSuccessBlock)successBlock
+                failureBlock:(JZFailureBlock)failureBlock;
 #pragma mark - 取消网络请求
 /**
  *  批量取消请求获取数据
@@ -122,6 +145,13 @@ typedef NS_ENUM(NSInteger, JZHTTPDataOperate) {
  *  @param responseSerializer JZResponseSerializerJSON(JSON格式),JZResponseSerializerHTTP(二进制格式)
  */
 + (void)setResponseSerializer:(JZResponseSerializer)responseSerializer;
+/**
+ *  设置请求头
+ *
+ *  @param value 值
+ *  @param field 键
+ */
++ (void)setValue:(NSString *)value forHTTPHeaderField:(NSString *)field;
 /**
  *  设置请求超时时间(默认为15s)
  *

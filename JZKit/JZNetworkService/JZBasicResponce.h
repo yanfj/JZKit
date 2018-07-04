@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "JZResponceProtocol.h"
 
 /**
  服务器状态码定义
@@ -24,24 +24,9 @@ typedef NS_ENUM(NSInteger,JZHTTPResponseCode){
     /**
      *  未知(接收数据格式不正确)
      */
-    JZHTTPResponseCodeUnkonw = - 10000,
+    JZHTTPResponseCodeUnkonw = - 10086,
     
 };
-
-
-#pragma mark - 响应协议
-@protocol JZResponceProtocol <NSObject>
-@optional
-/**
- * 需要替换的键值对
- */
-+ (NSDictionary<NSString *,NSString *> *)replacedKeyFromPropertyName;
-/**
- * 数组中的模型类
- */
-+ (NSDictionary<NSString *,Class> *)objectClassInArray;
-
-@end
 
 /**
  * 响应基类
@@ -59,6 +44,14 @@ typedef NS_ENUM(NSInteger,JZHTTPResponseCode){
  *  详细字段说明
  */
 @property (nonatomic, strong) id data;
+
+
+@end
+
+/**
+ * 错误响应
+ */
+@interface JZErrorResponce : JZBasicResponce
 
 
 @end

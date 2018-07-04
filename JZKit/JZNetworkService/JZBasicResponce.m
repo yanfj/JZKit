@@ -6,7 +6,7 @@
 //
 
 #import "JZBasicResponce.h"
-#import <MJExtension-Enhanced/MJExtension.h>
+#import <MJExtension/MJExtension.h>
 
 @implementation JZBasicResponce
 #pragma mark - MJExtension
@@ -28,7 +28,11 @@
     
     return [NSDictionary dictionary];
 }
-
+- (BOOL)success{
+    
+    return (self.code == 200);
+    
+}
 #pragma mark - MJKeyValue(手动过滤Foundation框架类里面的属性)
 + (NSArray *)mj_ignoredPropertyNames{
     
@@ -42,5 +46,11 @@
     
     return desc;
 }
+
+@end
+
+#pragma mark - 错误响应
+@implementation JZErrorResponce
+
 
 @end

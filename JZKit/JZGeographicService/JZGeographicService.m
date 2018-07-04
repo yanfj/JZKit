@@ -7,7 +7,7 @@
 
 #import "JZGeographicService.h"
 #import "JZGeographicCache.h"
-#import <MJExtension-Enhanced/MJExtension.h>
+#import <MJExtension/MJExtension.h>
 
 @implementation JZGeographicService
 #pragma mark - 更新本地文件

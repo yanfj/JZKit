@@ -100,7 +100,7 @@ THE SOFTWARE.</string>
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright (c) 2018 yanfj &lt;yanff.us@gmail.com&gt;
+			<string>Copyright (c) 2013-2015 MJExtension (https://github.com/CoderMJLee/MJExtension)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -123,7 +123,7 @@ THE SOFTWARE.
 			<key>License</key>
 			<string>MIT</string>
 			<key>Title</key>
-			<string>MJExtension-Enhanced</string>
+			<string>MJExtension</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

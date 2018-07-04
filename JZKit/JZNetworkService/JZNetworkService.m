@@ -8,7 +8,7 @@
 #import "JZNetworkService.h"
 #import <AFNetworking/AFNetworking.h>
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
-#import <MJExtension-Enhanced/MJExtension.h>
+#import <MJExtension/MJExtension.h>
 #import <JZKit/JZGeneralMacros.h>
 #import "JZHTTPResponseSerializer.h"
 #import "JZNetworkConfiguration.h"
@@ -52,6 +52,11 @@ static NSMutableDictionary<NSString *,NSURLSessionDataTask *> *_requestContainer
     
     _sessionManager.responseSerializer = (responseSerializer == JZResponseSerializerHTTP) ? [JZHTTPResponseSerializer serializer] : [AFJSONResponseSerializer serializer];
 }
++ (void)setValue:(NSString *)value forHTTPHeaderField:(NSString *)field{
+    
+    [_sessionManager.requestSerializer setValue:value forHTTPHeaderField:field];
+    
+}
 + (void)setTimeoutInterval:(NSTimeInterval)timeoutInterval{
     
     _sessionManager.requestSerializer.timeoutInterval = timeoutInterval;
@@ -63,20 +68,18 @@ static NSMutableDictionary<NSString *,NSURLSessionDataTask *> *_requestContainer
 }
 
 #pragma mark - 默认从网络请求
-+ (void)fetchDataWithRequest:(JZBasicRequest *)request
-                  completion:( void (^)(id responseObject, NSError *error))completion{
++ (void)fetchDataWithRequest:(id<JZRequestProtocol>)request
+                successBlock:(JZSuccessBlock)successBlock
+                failureBlock:(JZFailureBlock)failureBlock{
     
-    [self fetchDataWithRequest:request
-                       operate:JZHTTPDataOperate_LoadFromRemote
-                    completion:completion];
+    [self fetchDataWithRequest:request operate:JZHTTPDataOperate_LoadFromRemote successBlock:successBlock failureBlock:failureBlock];
 }
 #pragma mark -  通过请求获取数据(可操作模式)
-+ (void)fetchDataWithRequest:(JZBasicRequest *)request
++ (void)fetchDataWithRequest:(id<JZRequestProtocol>)request
                      operate:(JZHTTPDataOperate)operate
-                  completion:( void (^)(id responseObject, NSError *error))completion{
+                successBlock:(JZSuccessBlock)successBlock
+                failureBlock:(JZFailureBlock)failureBlock{
     
-    //获得响应类
-    Class responseClass = JZGetResponseClass(request);
     
     //如果从本地读取
     if ((operate & JZHTTPDataOperate_LoadFromLocal) == JZHTTPDataOperate_LoadFromLocal) {
@@ -87,9 +90,16 @@ static NSMutableDictionary<NSString *,NSURLSessionDataTask *> *_requestContainer
             //格式化
             NSDictionary *dict = JZDictFromResponseObject(responseData);
             //转化为对应的响应类
-            JZBasicResponce* response = [responseClass mj_objectWithKeyValues:dict];
+            id<JZResponceProtocol> response =  JZGetResponse(request, dict);
             //回调
-            completion(response , nil );
+            if (response.success) {
+                
+                successBlock ? successBlock(response) : nil;
+                
+            }else{
+                
+                failureBlock ? failureBlock((JZErrorResponce *)response,nil) : nil;
+            }
             
             return;
         }
@@ -127,9 +137,15 @@ static NSMutableDictionary<NSString *,NSURLSessionDataTask *> *_requestContainer
                 
             }
             //转化为对应的响应类
-            JZBasicResponce* response = [responseClass mj_objectWithKeyValues:dict];
+            id<JZResponceProtocol> response =  JZGetResponse(request, dict);
             //回调
-            completion(response, err);
+            if (response.success) {
+                
+                successBlock ? successBlock(response) : nil;
+            }else{
+                
+                failureBlock ? failureBlock((JZErrorResponce *)response,err) : nil;
+            }
             //从请求池中移除
             [_requestContainer  removeObjectForKey:[request uniqueKey]];
         };
@@ -146,13 +162,13 @@ static NSMutableDictionary<NSString *,NSURLSessionDataTask *> *_requestContainer
                                 progress:nil
                                  success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {
                                      //成功回调
-                                     if (![JZNetworkConfiguration defaultConfiguration].disabledLog) {
+                                     if ([JZNetworkConfiguration defaultConfiguration].logLevel >= JZNetworkLogLevelOutput) {
                                          NSLog(@"[POST]--[%@] 🍏\n%@",[request functionName],responseObject);
                                      }
                                      completionHandle( responseObject, nil );
                                  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                                      //失败回调
-                                     if (![JZNetworkConfiguration defaultConfiguration].disabledLog) {
+                                     if ([JZNetworkConfiguration defaultConfiguration].logLevel >= JZNetworkLogLevelOutput) {
                                          NSLog(@"[POST]--[%@] 🍎\n%@",[request functionName],error);
                                      }
                                      completionHandle( [[error userInfo] valueForKey:responce_data], error);
@@ -164,13 +180,13 @@ static NSMutableDictionary<NSString *,NSURLSessionDataTask *> *_requestContainer
                                progress:nil
                                 success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {
                                     //成功回调
-                                    if (![JZNetworkConfiguration defaultConfiguration].disabledLog) {
+                                    if ([JZNetworkConfiguration defaultConfiguration].logLevel >= JZNetworkLogLevelOutput) {
                                         NSLog(@"[GET]--[%@] 🍏\n%@",[request functionName],responseObject);
                                     }
                                     completionHandle( responseObject, nil );
                                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                                     //失败回调
-                                    if (![JZNetworkConfiguration defaultConfiguration].disabledLog) {
+                                    if ([JZNetworkConfiguration defaultConfiguration].logLevel >= JZNetworkLogLevelOutput) {
                                         NSLog(@"[GET]--[%@] 🍎\n%@",[request functionName],error);
                                     }
                                     completionHandle( [[error userInfo] valueForKey:responce_data], error);
@@ -182,13 +198,13 @@ static NSMutableDictionary<NSString *,NSURLSessionDataTask *> *_requestContainer
                              parameters:[request parameters]
                                 success:^(NSURLSessionDataTask * _Nonnull task, id _Nonnull responseObject) {
                                     //成功回调
-                                    if (![JZNetworkConfiguration defaultConfiguration].disabledLog) {
+                                    if ([JZNetworkConfiguration defaultConfiguration].logLevel >= JZNetworkLogLevelOutput) {
                                         NSLog(@"[PUT]--[%@] 🍏\n%@",[request functionName],responseObject);
                                     }
                                     completionHandle( responseObject, nil );
                                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                                     //失败回调
-                                    if (![JZNetworkConfiguration defaultConfiguration].disabledLog) {
+                                    if ([JZNetworkConfiguration defaultConfiguration].logLevel >= JZNetworkLogLevelOutput) {
                                         NSLog(@"[PUT]--[%@] 🍎\n%@",[request functionName],error);
                                     }
                                     completionHandle( [[error userInfo] valueForKey:responce_data], error);
@@ -202,9 +218,10 @@ static NSMutableDictionary<NSString *,NSURLSessionDataTask *> *_requestContainer
         
     }
 }
-+ (void)fetchDataWithRequest:(JZBasicRequest *)request
-               responseCache:( void (^)(id responseObject))responseCache
-                  completion:( void (^)(id responseObject, NSError *error))completion{
++ (void)fetchDataWithRequest:(id<JZRequestProtocol>)request
+               responseCache:(JZSuccessBlock)responseCache
+                successBlock:(JZSuccessBlock)successBlock
+                failureBlock:(JZFailureBlock)failureBlock{
     
     //获得请求体的类名
     NSString* requestClassString = NSStringFromClass([request class]);
@@ -222,12 +239,14 @@ static NSMutableDictionary<NSString *,NSURLSessionDataTask *> *_requestContainer
         //格式化成字典
         NSDictionary *dict = JZDictFromResponseObject(responseData);
         //获取响应体
-        response = [responseClass mj_objectWithKeyValues:dict];
+        id<JZResponceProtocol> response =  JZGetResponse(request, dict);
+        //回调
+        responseCache ? responseCache(response) : nil;
     }
     //回调
     responseCache ? responseCache(response) : nil;
     //从网络获取，然后更新本地数据
-    [self fetchDataWithRequest:request operate:(JZHTTPDataOperate_LoadFromRemote|JZHTTPDataOperate_UpdataToLocal) completion:completion];
+    [self fetchDataWithRequest:request operate:(JZHTTPDataOperate_LoadFromRemote|JZHTTPDataOperate_UpdataToLocal) successBlock:successBlock failureBlock:failureBlock];
     
 }
 #pragma mark - 取消请求
@@ -301,8 +320,8 @@ NSDictionary* JZDictFromResponseObject(id responseObject){
     
     return dict;
 }
-#pragma mark -  获取响应类名
-Class JZGetResponseClass (JZBasicRequest *request){
+#pragma mark -  通过请求体获取响应体
+id<JZResponceProtocol>  JZGetResponse(JZBasicRequest *request, NSDictionary *dict){
     
     //获得请求体的类名
     NSString* requestClassString = NSStringFromClass([request class]);
@@ -310,9 +329,25 @@ Class JZGetResponseClass (JZBasicRequest *request){
     NSString* responseClassString = [requestClassString stringByReplacingOccurrencesOfString:class_request withString:class_responce];
     //获得响应类
     Class responseClass = NSClassFromString(responseClassString);
-    
-    return responseClass;
-    
+    //检测是否有该类
+    if (responseClass) {
+        id<JZResponceProtocol> responce = [responseClass mj_objectWithKeyValues:dict];
+        
+        if (responce.success) {
+            
+            return responce;
+            
+        }else{
+            
+            return [JZErrorResponce mj_objectWithKeyValues:dict];
+        }
+        
+    }else{
+        if ([JZNetworkConfiguration defaultConfiguration].logLevel >= JZNetworkLogLevelOutput) {
+            NSLog(@"未检测到响应体类名: %@",responseClassString);
+        }
+        return [JZBasicResponce mj_objectWithKeyValues:dict];
+    }
 }
 @end
 
