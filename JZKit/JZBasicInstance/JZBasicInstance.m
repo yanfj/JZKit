@@ -29,9 +29,9 @@ static NSString * const instance_key = @"instance";
 }
 - (id)copyWithZone:(struct _NSZone *)zone{
     
-    Class selfClass = [self class];
+    Class class = [self class];
     
-    return [selfClass sharedInstance] ;
+    return [class sharedInstance] ;
 }
 
 @end
