@@ -66,11 +66,11 @@ fprintf(stderr,"%s JZKit(Debug):[%s:%d]: %s\n",[timeString UTF8String],[fileName
 
 //------------------- 获取屏幕相关 -------------------------
 //屏幕长度宽度
-#define UI_SCREEN_HEIGHT  ([UIScreen mainScreen].bounds.size.height)
-#define UI_SCREEN_WIDTH   ([UIScreen mainScreen].bounds.size.width)
+#define UI_SCREEN_HEIGHT  MAX([UIScreen mainScreen].bounds.size.width , [UIScreen mainScreen].bounds.size.height)
+#define UI_SCREEN_WIDTH   MIN([UIScreen mainScreen].bounds.size.width , [UIScreen mainScreen].bounds.size.height)
 
 //适配比
-#define UI_SCALE(dp)      (round((dp) * ((UI_IS_LANDSCAPE ? UI_SCREEN_HEIGHT : UI_SCREEN_WIDTH) / 375.f)))
+#define UI_SCALE(dp)      round((dp) * UI_SCREEN_WIDTH / 375.f)
 
 //------------------- 获取设备相关 -------------------------
 //获取系统版本

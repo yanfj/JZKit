@@ -72,3 +72,4 @@ Icon?
 *.podspec
 
 
+.DS_Store
