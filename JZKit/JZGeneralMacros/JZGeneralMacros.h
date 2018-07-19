@@ -56,8 +56,7 @@ NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];\
 [dateFormatter setTimeStyle:NSDateFormatterShortStyle];\
 [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"]; \
 NSString *timeString = [dateFormatter stringFromDate:[NSDate date]];\
-NSString *fileName = [NSString stringWithUTF8String:__FILE__];\
-fileName = [[fileName stringByReplacingOccurrencesOfString:@".m" withString:@""] lastPathComponent];\
+NSString *fileName = [[NSString stringWithUTF8String:__FILE__] lastPathComponent];\
 fprintf(stderr,"%s JZKit(Debug):[%s:%d]: %s\n",[timeString UTF8String],[fileName UTF8String], __LINE__,[[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);\
 }
 #else

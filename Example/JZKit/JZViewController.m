@@ -8,6 +8,8 @@
 
 #import "JZViewController.h"
 #import <JZKit/JZKit.h>
+#import "ABInstance.h"
+#import "CDInstance.h"
 
 @interface JZViewController ()
 
@@ -21,6 +23,9 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     [self jz_registerNotification];
+    
+    [ABInstance sharedInstance];
+    [CDInstance sharedInstance];
     
 }
 - (IBAction)button:(id)sender {
