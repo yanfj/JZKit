@@ -229,4 +229,16 @@ static NSData *base64_decode(NSString *str){
     
     return html;
 }
+#pragma mark - 截取字符串
+- (NSString *)jz_subStringWith:(NSString *)string toIndex:(NSInteger)index{
+    
+    NSString *result = string;
+    if (result.length > index) {
+        //避免出现将emoji截断出现null的情况
+        NSRange rangeIndex = [result rangeOfComposedCharacterSequenceAtIndex:index];
+        result = [result substringToIndex:(rangeIndex.location)];
+    }
+    
+    return result;
+}
 @end
