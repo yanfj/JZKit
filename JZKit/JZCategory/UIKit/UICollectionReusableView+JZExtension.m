@@ -1,23 +1,18 @@
 //
-//  UICollectionViewCell+JZExtension.m
-//  JZKit
+//  UICollectionReusableView+JZExtension.m
+//  AFNetworking
 //
-//  Created by Yan's on 2018/4/26.
+//  Created by RRTV-YFJ on 2018/7/26.
 //
 
-#import "UICollectionViewCell+JZExtension.h"
+#import "UICollectionReusableView+JZExtension.h"
 
-@implementation UICollectionViewCell (JZExtension)
+@implementation UICollectionReusableView (JZExtension)
 #pragma mark - UI
 - (void)jz_prepareUI{
     
-    self.contentView.clipsToBounds = YES;
+    //UI
     
-}
-#pragma mark - Notification
-- (void)jz_registerNotification{
-    
-    //通知
 }
 #pragma mark - Class
 + (CGSize)jz_itemSizeWithModel:(id)model{
@@ -37,8 +32,13 @@
     return NSStringFromClass([self class]);
 }
 #pragma mark -  Notification
+- (void)jz_registerNotification{
+    
+    //添加通知
+}
 - (void)jz_removeNotification{
     //移除通知
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-}@end
+}
+@end

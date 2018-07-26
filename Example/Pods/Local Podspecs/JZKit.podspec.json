@@ -1,6 +1,6 @@
 {
   "name": "JZKit",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "summary": "a general framework",
   "description": "Yan's general framework",
   "homepage": "https://github.com/yanfj/JZKit",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/yanfj/JZKit.git",
-    "tag": "1.2.0"
+    "tag": "1.2.1"
   },
   "social_media_url": "http://me.yanfj.com",
   "platforms": {

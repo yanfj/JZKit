@@ -21,7 +21,7 @@
 #import "UIButton+JZExtension.h"
 
 #import "UITableViewCell+JZExtension.h"
-#import "UICollectionViewCell+JZExtension.h"
+#import "UICollectionReusableView+JZExtension.h"
 
 #import "UIViewController+BackButtonHandler.h"
 #import "UIViewController+KeyboardAutoHidden.h"

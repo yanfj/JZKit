@@ -58,6 +58,6 @@
 /**
  配置UI
  */
-- (void)jz_prepareUI NS_REQUIRES_SUPER;
+- (void)jz_prepareUI;
 
 @end

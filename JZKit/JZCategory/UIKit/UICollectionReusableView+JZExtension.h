@@ -1,14 +1,14 @@
 //
-//  UICollectionViewCell+JZExtension.h
-//  JZKit
+//  UICollectionReusableView+JZExtension.h
+//  AFNetworking
 //
-//  Created by Yan's on 2018/4/26.
+//  Created by RRTV-YFJ on 2018/7/26.
 //
 
 #import <UIKit/UIKit.h>
 
 #pragma mark - 类方法协议
-@protocol JZCollectionViewCellClassProtocol <NSObject>
+@protocol JZCollectionReusableViewClassProtocol <NSObject>
 @optional
 /**
  根据模型返回重用标识符
@@ -40,7 +40,7 @@
 @end
 
 #pragma mark - 通知协议
-@protocol JZCollectionViewCellNotificationProtocol <NSObject>
+@protocol JZCollectionReusableViewNotificationProtocol <NSObject>
 @optional
 /**
  *   注册通知
@@ -52,10 +52,10 @@
 - (void)jz_removeNotification;
 @end
 
-@interface UICollectionViewCell (JZExtension)<JZCollectionViewCellClassProtocol,JZCollectionViewCellNotificationProtocol>
+@interface UICollectionReusableView (JZExtension)<JZCollectionReusableViewClassProtocol,JZCollectionReusableViewNotificationProtocol>
 /**
  配置UI
  */
-- (void)jz_prepareUI NS_REQUIRES_SUPER;
+- (void)jz_prepareUI;
 
 @end

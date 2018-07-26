@@ -11,11 +11,7 @@
 #pragma mark - UI
 - (void)jz_prepareUI{
     
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    self.accessoryType = UITableViewCellAccessoryNone;
-    
-    self.contentView.clipsToBounds = YES;
+    //UI
     
 }
 #pragma mark - JZTableViewCellClassProtocol
@@ -37,6 +33,7 @@
 }
 #pragma mark -  JZTableViewCellNotificationProtocol
 - (void)jz_registerNotification{
+    
     //添加通知
     
 }
