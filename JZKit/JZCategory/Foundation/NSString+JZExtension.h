@@ -39,12 +39,11 @@
 - (NSString *)jz_filterHTMLTags;
 /**
  截取字符串
-
- @param string 原字符串
+ 
  @param index 截取位数
  @return 截取后的字符串
  */
-- (NSString *)jz_subStringWith:(NSString *)string toIndex:(NSInteger)index;
+- (NSString *)jz_substringToIndex:(NSInteger)index;
 
 
 

@@ -27,6 +27,9 @@
     [ABInstance sharedInstance];
     [CDInstance sharedInstance];
     
+    NSString *string = @"Do any additional setup after loading the view, typically from a nib";
+    NSLog(@"%@",[string jz_substringToIndex:15]);
+    
 }
 - (IBAction)button:(id)sender {
     
