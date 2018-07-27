@@ -17,7 +17,7 @@
     CGSize textSize = [self.titleLabel.text sizeWithAttributes:@{NSFontAttributeName:self.titleLabel.font}];
     CGSize titleSize = CGSizeMake(ceilf(textSize.width), ceilf(textSize.height));
     CGFloat totalWidth = (titleSize.width + space + imageSize.width);
-    self.frame = CGRectMake(0, 0, totalWidth, MAX(imageSize.height, textSize.height));
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, totalWidth, MAX(imageSize.height, textSize.height));
     [self setTitleEdgeInsets:UIEdgeInsetsMake(0, - imageSize.width, 0, imageSize.width)];
     [self setImageEdgeInsets:UIEdgeInsetsMake(0, titleSize.width + space, 0, - (titleSize.width + space))];
 }
@@ -28,7 +28,7 @@
     CGSize textSize = [self.titleLabel.text sizeWithAttributes:@{NSFontAttributeName:self.titleLabel.font}];
     CGSize titleSize = CGSizeMake(ceilf(textSize.width), ceilf(textSize.height));
     CGFloat totalHeight = (imageSize.height + titleSize.height + space);
-    self.frame = CGRectMake(0, 0, MAX(imageSize.width, textSize.width), totalHeight);
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, MAX(imageSize.width, textSize.width), totalHeight);
     [self setImageEdgeInsets:UIEdgeInsetsMake(- (totalHeight - imageSize.height), 0, 0, - titleSize.width)];
     [self setTitleEdgeInsets:UIEdgeInsetsMake(0, - imageSize.width, - (totalHeight - titleSize.height), 0)];
     
