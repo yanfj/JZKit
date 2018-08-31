@@ -20,6 +20,7 @@
 #import "UIImageView+JZExtension.h"
 #import "UIButton+JZExtension.h"
 #import "UITextField+JZExtension.h"
+#import "UITextView+JZExtension.h"
 
 #import "UITableViewCell+JZExtension.h"
 #import "UICollectionReusableView+JZExtension.h"
