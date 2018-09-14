@@ -31,8 +31,6 @@
     NSLog(@"%@",[string jz_substringToIndex:15]);
     
     
-    NSLog(@"%d",UI_IS_IPHONE_X);
-    
 }
 - (IBAction)button:(id)sender {
     
