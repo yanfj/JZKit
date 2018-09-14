@@ -97,7 +97,7 @@ fprintf(stderr,"%s JZKit(Debug):[%s:%d]: %s\n",[timeString UTF8String],[fileName
 #define UI_IS_IPHONE_4_0  (UI_IS_IPHONE && UI_SCREEN_HEIGHT == 568.f && UI_SCREEN_WIDTH == 320.f)
 #define UI_IS_IPHONE_4_7  (UI_IS_IPHONE && UI_SCREEN_HEIGHT == 667.f && UI_SCREEN_WIDTH == 375.f)
 #define UI_IS_IPHONE_5_5  (UI_IS_IPHONE && UI_SCREEN_HEIGHT == 736.f && UI_SCREEN_WIDTH == 414.f)
-#define UI_IS_IPHONE_X    (UI_IS_IPHONE && UI_SCREEN_HEIGHT == 812.f && UI_SCREEN_WIDTH == 375.f)
+#define UI_IS_IPHONE_X    (UI_IS_IPHONE && [[NSString stringWithFormat:@"%.2f",(UI_SCREEN_WIDTH/UI_SCREEN_HEIGHT)] isEqualToString:@"0.46"])
 
 //------------------- 获取控件大小 -------------------------
 //导航栏高度
