@@ -30,6 +30,8 @@
     NSString *string = @"Do any additional setup after loading the view, typically from a nib";
     NSLog(@"%@",[string jz_substringToIndex:15]);
     
+    NSLog(@"%d",UI_IS_IPHONE_X);
+    
 }
 - (IBAction)button:(id)sender {
     

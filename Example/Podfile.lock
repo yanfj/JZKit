@@ -14,46 +14,47 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - JZKit (1.2.1):
-    - JZKit/JZBasicInstance (= 1.2.1)
-    - JZKit/JZCategory (= 1.2.1)
-    - JZKit/JZGeneralMacros (= 1.2.1)
-    - JZKit/JZGeographicService (= 1.2.1)
-    - JZKit/JZNetworkService (= 1.2.1)
-    - JZKit/JZPickerGroup (= 1.2.1)
-    - JZKit/JZProgressHUD (= 1.2.1)
-    - JZKit/JZSettingsService (= 1.2.1)
-  - JZKit/JZBasicInstance (1.2.1):
+  - JZKit (1.2.5):
+    - JZKit/JZBasicInstance (= 1.2.5)
+    - JZKit/JZCategory (= 1.2.5)
+    - JZKit/JZGeneralMacros (= 1.2.5)
+    - JZKit/JZGeographicService (= 1.2.5)
+    - JZKit/JZNetworkService (= 1.2.5)
+    - JZKit/JZPickerGroup (= 1.2.5)
+    - JZKit/JZProgressHUD (= 1.2.5)
+    - JZKit/JZSettingsService (= 1.2.5)
+  - JZKit/JZBasicInstance (1.2.5):
     - JZKit/JZGeneralMacros
-  - JZKit/JZCategory (1.2.1):
-    - JZKit/JZCategory/Foundation (= 1.2.1)
-    - JZKit/JZCategory/UIKit (= 1.2.1)
-    - JZKit/JZCategory/Unicode (= 1.2.1)
-  - JZKit/JZCategory/Foundation (1.2.1)
-  - JZKit/JZCategory/UIKit (1.2.1):
+  - JZKit/JZCategory (1.2.5):
+    - JZKit/JZCategory/Foundation (= 1.2.5)
+    - JZKit/JZCategory/UIKit (= 1.2.5)
+    - JZKit/JZCategory/Unicode (= 1.2.5)
+  - JZKit/JZCategory/Foundation (1.2.5)
+  - JZKit/JZCategory/UIKit (1.2.5):
+    - JZKit/JZCategory/Foundation
     - JZKit/JZGeneralMacros
     - SDWebImage (~> 4.0)
-  - JZKit/JZCategory/Unicode (1.2.1):
+  - JZKit/JZCategory/Unicode (1.2.5):
     - JZKit/JZCategory/Foundation
-  - JZKit/JZGeneralMacros (1.2.1)
-  - JZKit/JZGeographicService (1.2.1):
+  - JZKit/JZGeneralMacros (1.2.5)
+  - JZKit/JZGeographicService (1.2.5):
     - JZKit/JZBasicInstance
     - MJExtension
     - YYCache
-  - JZKit/JZNetworkService (1.2.1):
+  - JZKit/JZNetworkService (1.2.5):
     - AFNetworking (~> 3.0)
     - JZKit/JZGeneralMacros
     - MJExtension
     - YYCache
-  - JZKit/JZPickerGroup (1.2.1):
+  - JZKit/JZPickerGroup (1.2.5):
     - JZKit/JZCategory/Foundation
     - JZKit/JZGeneralMacros
     - JZKit/JZGeographicService
     - MMPopupView-Enhanced
-  - JZKit/JZProgressHUD (1.2.1):
+  - JZKit/JZProgressHUD (1.2.5):
     - JZKit/JZGeneralMacros
     - MBProgressHUD
-  - JZKit/JZSettingsService (1.2.1):
+  - JZKit/JZSettingsService (1.2.5):
     - JZKit/JZGeneralMacros
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
@@ -84,7 +85,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  JZKit: 8be5c184190531b48b2778a70c9cc00e4b107755
+  JZKit: f55c48049bff513afe09efcf0db5b5749be7f184
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756

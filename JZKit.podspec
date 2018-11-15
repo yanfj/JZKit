@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JZKit'
-  s.version          = '1.2.3'
-  s.summary          = 'a general framework'
+  s.version          = '1.2.5'
+  s.summary          = '常用框架'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -44,24 +44,23 @@ Pod::Spec.new do |s|
   s.subspec 'JZCategory' do |ss|
       
       ss.source_files = 'JZKit/JZCategory/JZCategory.h'
+      #Foundation
+      ss.subspec 'Foundation' do |sss|
+          sss.source_files = 'JZKit/JZCategory/Foundation'
+      end
       #UIKit
       ss.subspec 'UIKit' do |sss|
           
           sss.dependency 'SDWebImage','~> 4.0'
           sss.dependency 'JZKit/JZGeneralMacros'
+          sss.dependency 'JZKit/JZCategory/Foundation'
 
           sss.source_files = 'JZKit/JZCategory/UIKit'
-      end
-      
-      #Foundation
-      ss.subspec 'Foundation' do |sss|
-          sss.source_files = 'JZKit/JZCategory/Foundation'
       end
       #编码
       ss.subspec 'Unicode' do |sss|
           
           sss.dependency 'JZKit/JZCategory/Foundation'
-          
           sss.source_files = 'JZKit/JZCategory/Unicode'
       end
       

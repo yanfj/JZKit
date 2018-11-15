@@ -9,7 +9,7 @@
 
 @interface UIButton (JZExtension)
 /**
- 调整水平距离(图左文右)
+ 调整水平距离(图右文左)
  
  @param space 距离
  */

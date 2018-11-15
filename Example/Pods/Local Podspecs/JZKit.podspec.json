@@ -1,7 +1,7 @@
 {
   "name": "JZKit",
-  "version": "1.2.1",
-  "summary": "a general framework",
+  "version": "1.2.5",
+  "summary": "常用框架",
   "description": "Yan's general framework",
   "homepage": "https://github.com/yanfj/JZKit",
   "license": {
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/yanfj/JZKit.git",
-    "tag": "1.2.1"
+    "tag": "1.2.5"
   },
   "social_media_url": "http://me.yanfj.com",
   "platforms": {
@@ -32,6 +32,10 @@
       "source_files": "JZKit/JZCategory/JZCategory.h",
       "subspecs": [
         {
+          "name": "Foundation",
+          "source_files": "JZKit/JZCategory/Foundation"
+        },
+        {
           "name": "UIKit",
           "dependencies": {
             "SDWebImage": [
@@ -39,13 +43,12 @@
             ],
             "JZKit/JZGeneralMacros": [
 
+            ],
+            "JZKit/JZCategory/Foundation": [
+
             ]
           },
           "source_files": "JZKit/JZCategory/UIKit"
-        },
-        {
-          "name": "Foundation",
-          "source_files": "JZKit/JZCategory/Foundation"
         },
         {
           "name": "Unicode",
