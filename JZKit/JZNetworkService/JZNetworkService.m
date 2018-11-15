@@ -319,8 +319,24 @@ NSDictionary* JZDictFromResponseObject(id responseObject){
                  };
     }
     NSError* error;
+    NSDictionary* dict;
     
-    NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
+    id jsonData = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&error];
+    
+    if ([jsonData isKindOfClass:[NSArray class]]) {
+        
+        dict = [NSDictionary dictionaryWithObject:jsonData forKey:@"data"];
+        
+    }else if([jsonData isKindOfClass:[NSDictionary class]]){
+        
+        dict = [NSDictionary dictionaryWithDictionary:jsonData];
+        
+    }else{
+        //序列化失败
+        if ([JZNetworkConfiguration defaultConfiguration].logLevel >= JZNetworkLogLevelOutput) {
+            NSLog(@"json数据序列化失败");
+        }
+    }
     
     return dict;
 }
