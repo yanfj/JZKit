@@ -13,6 +13,10 @@
 @protocol JZResponceProtocol <NSObject>
 @optional
 /**
+ *  详细字段说明
+ */
+@property (nonatomic, strong) id data;
+/**
  *  是否请求成功
  */
 @property (nonatomic, assign,readonly) BOOL success;

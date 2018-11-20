@@ -109,7 +109,7 @@ static NSMutableDictionary<NSString *,NSURLSessionDataTask *> *_requestContainer
         }
     }
     //如果请求已经存在,立即取消,发送新的请求
-    if ([_requestContainer objectForKey:[request uniqueKey]]) {
+    if ([_requestContainer valueForKey:[request uniqueKey]]) {
         
         //如果不允许重复请求
         if (![request allowRepeat]) {
@@ -216,9 +216,12 @@ static NSMutableDictionary<NSString *,NSURLSessionDataTask *> *_requestContainer
                                 }];
             
         }
-            
-        //添加进请求池
-        task ? [_requestContainer  setObject:task forKey:[request uniqueKey]] : nil ;
+        
+        // 锁操作
+        @synchronized(_requestContainer){
+            //添加进请求管理池
+            task ? [_requestContainer  setValue:task forKey:[request uniqueKey]] : nil ;
+        }
         
     }
 }
@@ -261,13 +264,13 @@ static NSMutableDictionary<NSString *,NSURLSessionDataTask *> *_requestContainer
         return;
     }
     
-    @synchronized (self) {
+    @synchronized (_requestContainer) {
         
         [uniqueKeys enumerateObjectsUsingBlock:^(NSString * _Nonnull uniqueKey, NSUInteger idx, BOOL * _Nonnull stop) {
             
-            if ([_requestContainer objectForKey:uniqueKey]) {
+            if ([_requestContainer valueForKey:uniqueKey]) {
                 //获取请求任务
-                NSURLSessionDataTask *task = [_requestContainer  objectForKey:uniqueKey];
+                NSURLSessionDataTask *task = [_requestContainer  valueForKey:uniqueKey];
                 //取消
                 [task cancel];
                 //取消掉立即清除
@@ -286,7 +289,7 @@ static NSMutableDictionary<NSString *,NSURLSessionDataTask *> *_requestContainer
 + (void)cancelAllRequests{
     
     // 锁操作
-    @synchronized(self){
+    @synchronized(_requestContainer){
         
         [_requestContainer.allValues makeObjectsPerformSelector:@selector(cancel)];
         
