@@ -1,12 +1,12 @@
 //
-//  JZBasicResponce.h
+//  JZBasicResponse.h
 //  JZKit
 //
 //  Created by Yan's on 2018/4/27.
 //
 
 #import <Foundation/Foundation.h>
-#import "JZResponceProtocol.h"
+#import "JZResponseProtocol.h"
 
 /**
  服务器状态码定义
@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger,JZHTTPResponseCode){
 /**
  * 响应基类
  */
-@interface JZBasicResponce : NSObject<JZResponceProtocol>
+@interface JZBasicResponse : NSObject<JZResponseProtocol>
 /**
  *  状态码
  */
@@ -51,7 +51,7 @@ typedef NS_ENUM(NSInteger,JZHTTPResponseCode){
 /**
  * 错误响应
  */
-@interface JZErrorResponce : JZBasicResponce
+@interface JZErrorResponse : JZBasicResponse
 
 
 @end

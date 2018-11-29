@@ -1,5 +1,5 @@
 //
-//  JZResponceProtocol.h
+//  JZResponseProtocol.h
 //  JZKit
 //
 //  Created by Yan's on 2018/4/26.
@@ -10,7 +10,7 @@
 /**
  响应协议
  */
-@protocol JZResponceProtocol <NSObject>
+@protocol JZResponseProtocol <NSObject>
 @optional
 /**
  *  详细字段说明

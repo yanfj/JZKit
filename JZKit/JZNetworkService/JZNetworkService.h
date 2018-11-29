@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "JZRequestProtocol.h"
-#import "JZResponceProtocol.h"
+#import "JZResponseProtocol.h"
 
 /**
  *  请求数据枚举
@@ -57,14 +57,14 @@ typedef NS_ENUM(NSInteger, JZHTTPDataOperate) {
 };
 
 
-@class JZErrorResponce;
+@class JZErrorResponse;
 
 /**
  成功回调
 
  @param responseObject 响应体
  */
-typedef void(^JZSuccessBlock)(id<JZResponceProtocol> responseObject);
+typedef void(^JZSuccessBlock)(id<JZResponseProtocol> responseObject);
 
 /**
  失败回调
@@ -72,7 +72,7 @@ typedef void(^JZSuccessBlock)(id<JZResponceProtocol> responseObject);
  @param errorObject 错误响应体
  @param error 错误信息
  */
-typedef void(^JZFailureBlock)(JZErrorResponce* errorObject,NSError *error);
+typedef void(^JZFailureBlock)(JZErrorResponse* errorObject,NSError *error);
 
 /**
  数据请求管理者（负责分发数据请求，处理响应）

@@ -1,14 +1,14 @@
 //
-//  JZBasicResponce.m
+//  JZBasicResponse.m
 //  JZKit
 //
 //  Created by Yan's on 2018/4/27.
 //
 
-#import "JZBasicResponce.h"
+#import "JZBasicResponse.h"
 #import <MJExtension/MJExtension.h>
 
-@implementation JZBasicResponce
+@implementation JZBasicResponse
 #pragma mark - MJExtension
 + (NSDictionary *)mj_replacedKeyFromPropertyName{
     
@@ -50,7 +50,7 @@
 @end
 
 #pragma mark - 错误响应
-@implementation JZErrorResponce
+@implementation JZErrorResponse
 
 
 @end

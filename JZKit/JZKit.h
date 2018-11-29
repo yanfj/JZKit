@@ -19,7 +19,7 @@
 #import "JZGeneralMacros.h"
 //网络
 #import "JZBasicRequest.h"
-#import "JZBasicResponce.h"
+#import "JZBasicResponse.h"
 #import "JZNetworkService.h"
 #import "JZNetworkConfiguration.h"
 

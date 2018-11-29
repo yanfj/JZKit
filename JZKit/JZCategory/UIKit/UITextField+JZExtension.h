@@ -1,8 +1,8 @@
 //
 //  UITextField+JZExtension.h
-//  AFNetworking
+//  JZKit
 //
-//  Created by RRTV-YFJ on 2018/8/31.
+//  Created by Yan's on 2018/8/31.
 //
 
 #import <UIKit/UIKit.h>

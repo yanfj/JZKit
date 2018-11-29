@@ -1,8 +1,8 @@
 //
 //  UICollectionReusableView+JZExtension.m
-//  AFNetworking
+//  JZKit
 //
-//  Created by RRTV-YFJ on 2018/7/26.
+//  Created by Yan's on 2018/7/26.
 //
 
 #import "UICollectionReusableView+JZExtension.h"
