@@ -2,7 +2,7 @@
 //  JZBasicPicker.m
 //  JZKit
 //
-//  Created by Yan's on 2018/4/27.
+//  Created by YAN on 2018/4/27.
 //
 
 #import "JZBasicPicker.h"
@@ -55,7 +55,7 @@
         
         self.type = MMPopupTypeSheet;
         
-        CGFloat margin = UI_IS_IPHONE_X ? 33 : 0;
+        CGFloat margin = UI_IS_IPHONE_FULL_SCREEN ? 33 : 0;
         
         [self mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(UI_SCREEN_WIDTH);
@@ -115,7 +115,7 @@
         make.centerY.right.mas_equalTo(_bar);
     }];
     
-    CGFloat margin = UI_IS_IPHONE_X ? 33 : 0;
+    CGFloat margin = UI_IS_IPHONE_FULL_SCREEN ? 33 : 0;
     
     //内容视图
     _contentView = [[UIView alloc] init];

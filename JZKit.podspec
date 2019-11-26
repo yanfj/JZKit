@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JZKit'
-  s.version          = '1.3.0'
+  s.version          = '1.3.1'
   s.summary          = '常用框架'
 
 # This description is used to generate tags and improve search results.
@@ -26,10 +26,13 @@ Pod::Spec.new do |s|
   s.author           = { 'yanfj' => 'yanff.us@gmail.com' }
   s.source           = { :git => 'https://github.com/yanfj/JZKit.git', :tag => s.version.to_s }
   s.social_media_url = 'http://me.yanfj.com'
-
+ 
+  #最低支持系统版本
   s.ios.deployment_target = '8.0'
+  #ARC
   s.requires_arc = true
-
+  
+  #头文件
   s.public_header_files = 'JZKit/JZKit.h'
   s.source_files = 'JZKit/JZKit.h'
 

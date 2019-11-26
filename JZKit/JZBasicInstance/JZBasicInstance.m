@@ -2,7 +2,7 @@
 //  JZBasicInstance.m
 //  JZKit
 //
-//  Created by Yan's on 2018/4/27.
+//  Created by YAN on 2018/4/27.
 //
 
 #import "JZBasicInstance.h"
@@ -18,7 +18,7 @@ static NSString * const instance_key = @"instance";
     id instance = objc_getAssociatedObject(self, &instance_key);
     if (!instance){
         instance = [[super allocWithZone:NULL] init];
-        NSLog(@"单例创建:%@",[self class]);
+        NSLog(@"单例创建:%@ 内存地址:%p",[self class], instance);
         objc_setAssociatedObject(self, &instance_key, instance, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return instance;

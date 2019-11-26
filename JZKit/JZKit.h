@@ -2,7 +2,7 @@
 //  JZKit.h
 //  JZKit
 //
-//  Created by Yan's on 2018/4/27.
+//  Created by YAN on 2018/4/27.
 //
 
 #ifndef JZKit_h

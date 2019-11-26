@@ -2,7 +2,7 @@
 //  JZBasicRequest.m
 //  JZKit
 //
-//  Created by Yan's on 2018/4/26.
+//  Created by YAN on 2018/4/26.
 //
 
 #import "JZBasicRequest.h"

@@ -2,7 +2,7 @@
 //  UICollectionReusableView+JZExtension.h
 //  JZKit
 //
-//  Created by Yan's on 2018/7/26.
+//  Created by YAN on 2018/7/26.
 //
 
 #import <UIKit/UIKit.h>

@@ -35,8 +35,8 @@
           :,, , ::::::::i:::i:::i:i::,,,,,:,::i:i:::iir;@Secbone.ii:::
  
                  JZKit                JZGeneralMacros
- //  Created by Yan's on 2018/4/26.
- //  Copyright © 2018年 Yan's All rights reserved.
+ //  Created by YAN on 2018/4/26.
+ //  Copyright © 2018年 YAN All rights reserved.
 **********************************************************************/
 
 
@@ -74,6 +74,7 @@ fprintf(stderr,"%s JZKit(Debug):[%s:%d]: %s\n",[timeString UTF8String],[fileName
 //------------------- 获取设备相关 -------------------------
 //获取系统版本
 #define SYSTEM_VERSION    [[[UIDevice currentDevice] systemVersion] floatValue]
+
 //获取app名字
 #define APP_NAME          [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"]
 
@@ -88,6 +89,7 @@ fprintf(stderr,"%s JZKit(Debug):[%s:%d]: %s\n",[timeString UTF8String],[fileName
 
 //获取设备横屏情况
 #define UI_IS_LANDSCAPE   ([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeLeft || [UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeRight)
+
 //获取设备类型
 #define UI_IS_IPAD        [[UIDevice currentDevice].model isEqualToString:@"iPad"]
 #define UI_IS_IPHONE      [[UIDevice currentDevice].model isEqualToString:@"iPhone"]
@@ -97,24 +99,27 @@ fprintf(stderr,"%s JZKit(Debug):[%s:%d]: %s\n",[timeString UTF8String],[fileName
 #define UI_IS_IPHONE_4_0  (UI_IS_IPHONE && UI_SCREEN_HEIGHT == 568.f && UI_SCREEN_WIDTH == 320.f)
 #define UI_IS_IPHONE_4_7  (UI_IS_IPHONE && UI_SCREEN_HEIGHT == 667.f && UI_SCREEN_WIDTH == 375.f)
 #define UI_IS_IPHONE_5_5  (UI_IS_IPHONE && UI_SCREEN_HEIGHT == 736.f && UI_SCREEN_WIDTH == 414.f)
+
 //iPhone X之前的机型宽高比大约0.56,后续全面品机型宽高比大约0.46
-#define UI_IS_IPHONE_X    (UI_IS_IPHONE && ((UI_SCREEN_WIDTH/UI_SCREEN_HEIGHT) < 0.5))
+#define UI_IS_IPHONE_FULL_SCREEN   (UI_IS_IPHONE && ((UI_SCREEN_WIDTH/UI_SCREEN_HEIGHT) < 0.5))
 
 //------------------- 获取控件大小 -------------------------
 //导航栏高度
 #define UI_NAVIGATIONBAR_HEIGHT     44.f
 
 //状态栏高度
-#define UI_STATUSBAR_HEIGHT         (UI_IS_IPHONE_X ? 44.f : 20.f)
+#define UI_STATUSBAR_HEIGHT         (UI_IS_IPHONE_FULL_SCREEN ? 44.f : 20.f)
 
 //选项卡高度
-#define UI_TABBAR_HEIGHT            (UI_IS_IPHONE_X ? 83.f : 49.f)
+#define UI_TABBAR_HEIGHT            (UI_IS_IPHONE_FULL_SCREEN ? 83.f : 49.f)
 
 //-------------------- 颜色 -----------------------------
 //RGBA的颜色设置
 #define RGBA_COLOR(R, G, B, A)   [UIColor colorWithRed:R/255.f green:G/255.f blue:B/255.f alpha:A/1.f]
+
 //RGBA的颜色设置
 #define RGB_COLOR(R, G, B)   [UIColor colorWithRed:R/255.f green:G/255.f blue:B/255.f alpha:1.f]
+
 //HEX 颜色设置 (0xFFFFFF)
 #define HEX_COLOR(hexString)    [UIColor colorWithRed:((float)((hexString & 0xFF0000) >> 16))/255.0 green:((float)((hexString & 0xFF00) >> 8))/255.0 blue:((float)(hexString & 0xFF))/255.0 alpha:1.0]
 

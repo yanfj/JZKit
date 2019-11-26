@@ -27,10 +27,13 @@
     [ABInstance sharedInstance];
     [CDInstance sharedInstance];
     
+    ABInstance *instace = [[ABInstance alloc] init];
+    NSLog(@"单例:%@ 内存地址:%p",[instace class],instace);
+    
     NSString *string = @"Do any additional setup after loading the view, typically from a nib";
     NSLog(@"%@",[string jz_substringToIndex:15]);
     
-    NSLog(@"%d",UI_IS_IPHONE_X);
+    NSLog(@"%d",UI_IS_IPHONE_FULL_SCREEN);
     
 }
 - (IBAction)button:(id)sender {

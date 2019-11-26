@@ -250,6 +250,9 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = yanfj;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = MQ4RPYJK2A;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -260,6 +263,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -498,6 +502,7 @@
 			baseConfigurationReference = 4A208FB0C555D68909156BD7 /* Pods-JZKit_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MQ4RPYJK2A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JZKit/JZKit-Prefix.pch";
 				INFOPLIST_FILE = "JZKit/JZKit-Info.plist";
@@ -515,6 +520,7 @@
 			baseConfigurationReference = 08B4695F09B372CEFD828B61 /* Pods-JZKit_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MQ4RPYJK2A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JZKit/JZKit-Prefix.pch";
 				INFOPLIST_FILE = "JZKit/JZKit-Info.plist";

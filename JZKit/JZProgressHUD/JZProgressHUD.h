@@ -2,7 +2,7 @@
 //  JZProgressHUD.h
 //  JZKit
 //
-//  Created by Yan's on 2018/4/28.
+//  Created by YAN on 2018/4/28.
 //
 
 #import <Foundation/Foundation.h>
