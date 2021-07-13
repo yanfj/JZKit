@@ -325,7 +325,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-JZKit_Example/Pods-JZKit_Example-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-JZKit_Example/Pods-JZKit_Example-resources.sh",
 				"${PODS_ROOT}/../../JZKit/JZProgressHUD/JZProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -334,7 +334,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JZKit_Example/Pods-JZKit_Example-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JZKit_Example/Pods-JZKit_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

@@ -7,8 +7,33 @@
 
 #import "JZBasicRequest.h"
 #import "JZNetworkConfiguration.h"
-#import <MJExtension/MJExtension.h>
 #import <JZKit/JZGeneralMacros.h>
+#import <YYModel/YYModel.h>
+#import <CommonCrypto/CommonDigest.h>
+
+
+/// md5
+/// @param originStr  原字符串
+NSString *md5String(NSString *originStr) {
+    
+    const char *myPasswd = [originStr UTF8String];
+    
+    unsigned char mdc[ 16 ];
+    
+    CC_MD5 (myPasswd, ( CC_LONG ) strlen (myPasswd), mdc);
+    
+    NSMutableString *md5String = [ NSMutableString string ];
+    
+    for ( int i = 0 ; i< 16 ; i++) {
+        
+        [md5String appendFormat : @"%02x" ,mdc[i]];
+        
+    }
+    
+    return md5String;
+    
+}
+
 
 //需要被过滤的初始键值
 static NSString * const key_ignoreKeys  = @"ignoreKeys";
@@ -54,7 +79,7 @@ static NSString * const key_ignoreKeys  = @"ignoreKeys";
 - (NSDictionary *)parameters{
     
     //模型转字典
-    NSMutableDictionary *para = [self mj_keyValuesWithIgnoredKeys:[self.ignoreKeys allObjects]];
+    NSMutableDictionary *para = [(NSDictionary *)[self yy_modelToJSONObject] mutableCopy];
     //替换键值
     para = [self replaceKeys:para];
     
@@ -85,29 +110,29 @@ static NSString * const key_ignoreKeys  = @"ignoreKeys";
 #pragma mark - 唯一键值，用来管理请求池
 - (NSString *)uniqueKey{
     
-    //创建过滤集合
-    NSMutableSet<NSString *>  *ignoreSet = [NSMutableSet set];
-    //添加过滤参数
-    [ignoreSet addObjectsFromArray:[self.ignoreKeys allObjects]];
-
-    //过滤加密的参数
-    if ([self respondsToSelector:@selector(encryptedKeys)]) {
-        [ignoreSet addObjectsFromArray:[self encryptedKeys]];
-    }
-    //模型转字典
-    NSMutableDictionary *para = [self mj_keyValuesWithIgnoredKeys:[ignoreSet allObjects]];
-    //替换
-    para = [self replaceKeys:para];
+    //请求参数
+    NSString *string = [self yy_modelToJSONString];
+    //md5值
+    NSString *md5Str = md5String(string);
     //唯一键值
-    NSString *uniqueKey = [NSString stringWithFormat:@"%@%@%@",[self moduleName],[self functionName],[para mj_JSONString]];
+    NSString *uniqueKey = [NSString stringWithFormat:@"%@%@%@",[self moduleName],[self functionName],md5Str];
     
     return uniqueKey;
     
 }
-#pragma mark - MJKeyValue(手动过滤Foundation框架类里面的属性)
-+ (NSArray *)mj_ignoredPropertyNames{
+#pragma mark - YYModel
+//(黑名单) [手动过滤Foundation框架类里面的属性]
++ (NSArray *)modelPropertyBlacklist {
     
     return @[@"debugDescription",@"description",@"hash",@"superclass"];
+}
+// 忽略属性不被转换
+- (BOOL)modelCustomTransformToDictionary:(NSMutableDictionary *)dic {
+        
+    for (NSString *key in self.ignoreKeys) {
+        [dic removeObjectForKey:key];
+    }
+    return YES;
     
 }
 @end

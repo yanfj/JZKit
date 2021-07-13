@@ -35,6 +35,8 @@
     
     NSLog(@"%d",UI_IS_IPHONE_FULL_SCREEN);
     
+    NSLog(@"%@",NSClassFromString(@"JZViewController"));
+    NSLog(@"%@",NSClassFromString(@"JZViewController1"));
 }
 - (IBAction)button:(id)sender {
     

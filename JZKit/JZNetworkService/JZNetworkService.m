@@ -8,7 +8,7 @@
 #import "JZNetworkService.h"
 #import <AFNetworking/AFNetworking.h>
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
-#import <MJExtension/MJExtension.h>
+#import <YYModel/YYModel.h>
 #import <JZKit/JZGeneralMacros.h>
 #import "JZHTTPResponseSerializer.h"
 #import "JZNetworkConfiguration.h"
@@ -354,7 +354,7 @@ id<JZResponseProtocol>  JZGetResponse(JZBasicRequest *request, NSDictionary *dic
     Class responseClass = NSClassFromString(responseClassString);
     //检测是否有该类
     if (responseClass) {
-        id<JZResponseProtocol> response = [responseClass mj_objectWithKeyValues:dict];
+        id<JZResponseProtocol> response = [responseClass yy_modelWithJSON:dict];
         
         if (response.success) {
             
@@ -362,14 +362,14 @@ id<JZResponseProtocol>  JZGetResponse(JZBasicRequest *request, NSDictionary *dic
             
         }else{
             
-            return [JZErrorResponse mj_objectWithKeyValues:dict];
+            return [JZErrorResponse yy_modelWithJSON:dict];
         }
         
     }else{
         if ([JZNetworkConfiguration defaultConfiguration].logLevel >= JZNetworkLogLevelOutput) {
-            NSLog(@"未检测到响应体类名: %@",responseClassString);
+            NSLog(@"[未检测到响应体类名]: %@",responseClassString);
         }
-        return [JZBasicResponse mj_objectWithKeyValues:dict];
+        return [JZBasicResponse yy_modelWithJSON:dict];
     }
 }
 @end

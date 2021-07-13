@@ -7,7 +7,7 @@
 
 #import "JZGeographicService.h"
 #import "JZGeographicCache.h"
-#import <MJExtension/MJExtension.h>
+#import <YYModel/YYModel.h>
 
 @implementation JZGeographicService
 #pragma mark - 更新本地文件
@@ -21,7 +21,7 @@
     
     id data = [JZGeographicCache dataForKey:key];
     
-    NSMutableArray<id<JZGeographicModel>> * array = [class mj_objectArrayWithKeyValuesArray:data];
+    NSArray<id<JZGeographicModel>> * array = [NSArray yy_modelArrayWithClass:class json:data];
     
     _dataSource = array ?:[NSArray array];
     

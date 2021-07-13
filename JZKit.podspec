@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JZKit'
-  s.version          = '1.3.1'
+  s.version          = '1.4.0'
   s.summary          = '常用框架'
 
 # This description is used to generate tags and improve search results.
@@ -73,7 +73,7 @@ Pod::Spec.new do |s|
   s.subspec 'JZNetworkService' do |ss|
       
       ss.dependency 'AFNetworking', '~> 3.0'
-      ss.dependency 'MJExtension', '~> 3.0'
+      ss.dependency 'YYModel', '~> 1.0'
       ss.dependency 'YYCache', '~> 1.0'
       ss.dependency 'JZKit/JZGeneralMacros'
       
@@ -103,7 +103,7 @@ Pod::Spec.new do |s|
   s.subspec 'JZGeographicService' do |ss|
       
       ss.dependency 'JZKit/JZBasicInstance'
-      ss.dependency 'MJExtension', '~> 3.0'
+      ss.dependency 'YYModel', '~> 1.0'
       ss.dependency 'YYCache', '~> 1.0'
       
       ss.source_files = 'JZKit/JZGeographicService'

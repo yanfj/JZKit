@@ -6,20 +6,12 @@
 //
 
 #import "JZBasicResponse.h"
-#import <MJExtension/MJExtension.h>
+#import <YYModel/YYModel.h>
 
 @implementation JZBasicResponse
-#pragma mark - MJExtension
-+ (NSDictionary *)mj_replacedKeyFromPropertyName{
-    
-    if ([self respondsToSelector:@selector(replacedKeyFromPropertyName)]) {
-        
-        return [self replacedKeyFromPropertyName];
-    }
-    
-    return [NSDictionary dictionary];
-}
-+ (NSDictionary *)mj_objectClassInArray{
+#pragma mark - YYModel
+// 返回容器类中的所需要存放的数据类型 (以 Class 或 Class Name 的形式)。
++ (nullable NSDictionary<NSString *, id> *)modelContainerPropertyGenericClass {
     
     if ([self respondsToSelector:@selector(objectClassInArray)]) {
         
@@ -28,21 +20,26 @@
     
     return [NSDictionary dictionary];
 }
-- (BOOL)success{
+//返回一个 Dict，将 Model 属性名对映射到 JSON 的 Key。
++ (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper {
     
-    return (self.code == 200);
+    if ([self respondsToSelector:@selector(replacedKeyFromPropertyName)]) {
+        
+        return [self replacedKeyFromPropertyName];
+    }
     
+    return [NSDictionary dictionary];
 }
-#pragma mark - MJKeyValue(手动过滤Foundation框架类里面的属性)
-+ (NSArray *)mj_ignoredPropertyNames{
+
+//(黑名单) [手动过滤Foundation框架类里面的属性]
++ (NSArray *)modelPropertyBlacklist {
     
     return @[@"debugDescription",@"description",@"hash",@"superclass"];
-    
 }
 #pragma mark - 描述
 - (NSString *)description{
     
-    NSString *desc = [NSString stringWithFormat:@"%@",[self mj_keyValues]];
+    NSString *desc = [self yy_modelToJSONString];
     
     return desc;
 }
